@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import werkzeug
 import os
 from pose_estimation import pose_estimation
+import argparse
 
 app = Flask(__name__)
 
@@ -28,4 +29,8 @@ def upload():
         })
 
 if __name__ == "__main__":
-    app.run(debug=True, port=4000)
+    parser = argparse.ArgumentParser(description="Flask api exposing yolov5 model")
+    parser.add_argument("--port", default=5000, type=int, help="port number")
+    parser.add_argument('--model', default='yolov5s', help='model to run, i.e. --model yolov5s')
+    args = parser.parse_args()
+    app.run(host="0.0.0.0", port=args.port)
