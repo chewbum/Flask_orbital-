@@ -29,8 +29,4 @@ def upload():
         })
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Flask api exposing yolov5 model")
-    parser.add_argument("--port", default=5000, type=int, help="port number")
-    parser.add_argument('--model', default='yolov5s', help='model to run, i.e. --model yolov5s')
-    args = parser.parse_args()
-    app.run(host="0.0.0.0", port=args.port)
+    app.run(host="0.0.0.0")
